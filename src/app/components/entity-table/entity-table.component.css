@@ -1,0 +1,53 @@
+.custom-table .table-headers,
+.custom-table .table-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: var(--space-2);
+}
+
+.custom-table .table-headers {
+    background-color: var(--color-green);
+    font-weight: bold;
+}
+
+.custom-table .table-row {
+    position: relative;
+}
+
+.custom-table .table-row.accordion-button::after {
+    position: absolute;
+    right: 0;
+    margin-right: var(--space-3);
+}
+
+.custom-table .table-row.accordion-button:not(.collapsed) {
+    background-color: var(--color-white);
+}
+
+.custom-table .table-row img {
+    width: 45px;
+}
+
+.custom-table .table-column {
+    display: flex;
+    align-items: center;
+}
+
+.custom-table .form-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: var(--space-3);
+    padding: var(--space-3);
+}
+
+.form-container .form-label {
+    font-weight: bold;
+}
+
+.custom-table .actions-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: var(--space-3);
+    padding: var(--space-3);
+}

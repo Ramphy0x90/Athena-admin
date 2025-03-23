@@ -1,0 +1,6 @@
+<div class="clients-page-container page-container">
+    <app-entity-table [columns]="tableColumns"
+                      [data]="clients"
+                      (onUpdate)="updateClient($event)">
+    </app-entity-table>
+</div>

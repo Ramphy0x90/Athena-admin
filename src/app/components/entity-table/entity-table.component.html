@@ -1,0 +1,96 @@
+<div class="clients-table custom-table">
+    <div class="table-headers">
+        @for(column of columns; track column.dataField) {
+            <div scope="col">{{column.label || column.dataField | textToTitle}}</div>
+        }
+    </div>
+
+    <div class="table-body">
+        <div class="accordion">
+            @for(entity of data; track entity.id; let entityIndex = $index) {
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="table-row accordion-button collapsed"
+                            data-bs-toggle="collapse"
+                            [attr.data-bs-target]="'#flush-entity' + entity.id"
+                            [attr.aria-controls]="'flush-entity' + entity.id">
+
+                            @for(column of columns; track column.label) {
+                                @if(isImage(entity[column.dataField])) {
+                                    <img [src]="'data:image/png;base64,' + entity[column.dataField]">
+                                }@else {
+                                    <div class="table-column">{{entity[column.dataField] ?? " - "}}</div>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <div [attr.id]="'flush-entity' + entity.id"
+                        class="accordion-collapse collapse">
+                        <div class="form-container">   
+                            @for(column of columns; track column.dataField) {
+                                <div class="form-input">
+                                    <label [attr.for]="'field-' + column.dataField + '-' + entity.id" class="form-label">
+                                        {{(column.label || column.dataField) | textToTitle}}
+                                    </label>
+
+
+                                    @switch (column.type) {
+                                        @case (tableColumnTypeEnum.ID) {
+                                            <input type="number"
+                                                class="form-control"
+                                                [attr.id]="'field-' + column.dataField + '-' + entity.id"
+                                                [(ngModel)]="entity[column.dataField]"
+                                                disabled>
+                                        }
+
+                                        @case (tableColumnTypeEnum.NUMBER) {
+                                            <input type="number"
+                                                class="form-control"
+                                                [attr.id]="'field-' + column.dataField + '-' + entity.id"
+                                                [(ngModel)]="entity[column.dataField]">
+                                        }
+    
+                                        @case (tableColumnTypeEnum.TEXT) {
+                                            <input type="text"
+                                                class="form-control"
+                                                [attr.id]="'field-' + column.dataField + '-' + entity.id"
+                                                [(ngModel)]="entity[column.dataField]">
+                                        }
+    
+                                        @case (tableColumnTypeEnum.BIG_TEXT) {
+                                            <textarea class="form-control"
+                                                    [attr.id]="'field-' + column.dataField + '-' + entity.id"
+                                                    [(ngModel)]="entity[column.dataField]"
+                                                    rows="3">
+                                            </textarea>
+                                        }
+
+                                        @case (tableColumnTypeEnum.FILE) {
+                                            <input type="file"
+                                                class="form-control"
+                                                [attr.id]="'field-' + column.dataField + '-' + entity.id"
+                                                [(ngModel)]="entity[column.dataField]">
+                                        }
+    
+                                        @default {
+                                            <input type="text"
+                                                class="form-control"
+                                                [attr.id]="'field-' + column.dataField + '-' + entity.id"
+                                                [(ngModel)]="entity[column.dataField]">
+                                        }
+                                    }
+                                </div>
+                            }
+                        </div>
+
+                        <div class="actions-container">
+                            <button class="btn" (click)="discardChanges(entityIndex)">Discard</button>
+                            <button class="btn btn-secondary" (click)="saveEntity(entityIndex)">Save</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
