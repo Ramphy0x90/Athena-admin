@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AthenaAuthService } from '../../services/athena-auth.service';
 import { Client } from '../../types/dto/client';
 import { take } from 'rxjs';
-import { EntityTableComponent } from '../../components/entity-table/entity-table.component';
 import { TableColumn, TableColumnType } from '../../types/table-column';
 
 @Component({
     selector: 'app-clients',
-    imports: [EntityTableComponent],
+    standalone: false,
     templateUrl: './clients.component.html',
     styleUrl: './clients.component.css'
 })

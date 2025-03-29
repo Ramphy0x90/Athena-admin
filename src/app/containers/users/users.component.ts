@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityTableComponent } from '../../components/entity-table/entity-table.component';
 import { TableColumn, TableColumnType } from '../../types/table-column';
 import { AthenaAuthService } from '../../services/athena-auth.service';
 import { User } from '../../types/dto/user';
@@ -7,7 +6,7 @@ import { take } from 'rxjs';
 
 @Component({
     selector: 'app-users',
-    imports: [EntityTableComponent],
+    standalone: false,
     templateUrl: './users.component.html',
     styleUrl: './users.component.css'
 })
