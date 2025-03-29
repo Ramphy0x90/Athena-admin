@@ -7,7 +7,6 @@ import { take } from 'rxjs';
 
 @Component({
     selector: 'app-users',
-    standalone: true,
     imports: [EntityTableComponent],
     templateUrl: './users.component.html',
     styleUrl: './users.component.css'

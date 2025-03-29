@@ -7,7 +7,6 @@ import { TableColumn, TableColumnType } from '../../types/table-column';
 
 @Component({
     selector: 'app-clients',
-    standalone: true,
     imports: [EntityTableComponent],
     templateUrl: './clients.component.html',
     styleUrl: './clients.component.css'

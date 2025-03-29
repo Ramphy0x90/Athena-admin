@@ -8,7 +8,6 @@ import _ from 'lodash';
 
 @Component({
     selector: 'app-entity-table',
-    standalone: true,
     imports: [CommonModule, FormsModule, TextToTitlePipe],
     templateUrl: './entity-table.component.html',
     styleUrl: './entity-table.component.css'

@@ -7,7 +7,6 @@ import { NAV_BAR_ROUTES } from '../../app.routes';
 
 @Component({
     selector: 'app-nav-bar',
-    standalone: true,
     imports: [CommonModule, FormsModule, RouterLink, RouterLinkActive],
     templateUrl: './nav-bar.component.html',
     styleUrl: './nav-bar.component.css'
