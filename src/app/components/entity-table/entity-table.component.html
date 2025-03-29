@@ -15,7 +15,7 @@
                             [attr.data-bs-target]="'#flush-entity' + entity.id"
                             [attr.aria-controls]="'flush-entity' + entity.id">
 
-                            @for(column of columns; track column.label) {
+                            @for(column of columns; track column.dataField) {
                                 @if(isImage(entity[column.dataField])) {
                                     <img [src]="'data:image/png;base64,' + entity[column.dataField]">
                                 }@else {
